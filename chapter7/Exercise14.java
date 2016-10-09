@@ -13,30 +13,47 @@ public class Exercise14 {
     static boolean contains(int[] a,int[] b){
     	boolean result=false;
     	boolean flag=true;
-    	int bLength=b.length;
+    	int bLength=a.length;
     	int [] tempArray=new int[bLength];
     	int start=0;
     	int end=b.length-1;
     	
+    	int tempIndex=0;
+    	System.out.println(start);
+    	System.out.println(end);
+    	
+    	while(end<a.length){
     	for(int i=start;i<=end;i++){
-    		tempArray[i]=a[i];
+    		tempArray[tempIndex++]=a[i];
     	}
     	
     	for(int i=0;i<b.length;i++){
     		if(b[i]!=tempArray[i]){
     			flag=false;
+    			break;
     		}
     	}
+    	
+    	start=start+1;
+    	end=end+1;
+    	System.out.println(start);
+    	System.out.println(end);
+    	tempIndex=0;
+    	
     	if(flag==false){
     		flag=true;
+    	}else{
+    		result=true;
+    		break;
+    		 
     	}
-    	
+    	}
     	return result;
     }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] list1 = {1, 6, 2, 1, 4, 1, 2, 1, 8};
-		int[] list2 = {1, 2, 1};
+		int[] list2 = {1, 2};
 		
 		System.out.println(contains(list1,list2));
 	}
